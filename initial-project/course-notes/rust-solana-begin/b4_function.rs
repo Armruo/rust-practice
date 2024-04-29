@@ -10,6 +10,7 @@ fn u32_add(a: u32, b: u32) -> u32 {
 }
 
 /**
+----------------- method ------------------
 语法：T::fn_name(args...)
 */
 fn test_method() {
