@@ -24,7 +24,7 @@ fn test_pattern_match() {
     };
     let Plant {flowering, mass} = p;
 }
-
+// ---------------- enum match -----------------
 fn test_enum() {
     enum Meal {
         FishAndChips {chip_proportion: f64},
@@ -40,6 +40,15 @@ fn test_enum() {
 
     if let Meal::Hamburger { vegetarian: true } = m {
         println!("I had a vegetarian hamburger!");
+    }
+
+    // 以下程序打印：Jumping
+    enum Key { Up, Down, Left, Right };
+    match Key::Left {
+        Key::Up => println!("Jumping"),
+        Key::Down => println!("Ducking!"),
+        Key::Left => println!("Sliding Left!"),
+        Key::Right => println!("Sliding Right!"),
     }
 
 }
@@ -59,6 +68,7 @@ fn test_match_0() {
     }
 }
 
+// ----------------- if let 中的模式：表达式类型中必须存在模式未涵盖的值 ------------------
 fn test_match_if() {
 
     match meal {
@@ -119,5 +129,14 @@ fn test_for() {
         let numbering = index + 1;
         println!("color #{numbering} is {color}")
 
+    }
+
+    // 以下程序打印：abb
+    for n in 1..=3 {
+        match n {
+            0 | 1 => print!("a"),
+            _ => print!("b"),
+            other if other > 2 => print!("c"),
+        }
     }
 }
