@@ -56,7 +56,7 @@ impl<T> Sequence3<T> where T: Copy + Add<Output = T> {
 // todo 类型也可以take多种泛型
 struct MyStruct<A, B> { a: A, b: B, }
 enum MyEnum<A, B> { A(A), B(B), }
-fn main() {
+fn main1() {
     let s = MyStruct {
         a: 10,
         b: "str"
@@ -68,5 +68,16 @@ fn main() {
 
 // -------------- Generic Functions ---------------
 // 也可以编写接受泛型类型的自由函数：
+// Accept any type `T` implements `Display` meaning that they can be formatted as text.
+fn say_hello<T: std::fmt::Display>(value: &T) {
+    println!("Hello, {value}!");
+}
+
+fn main2() {
+    say_hello(&true); // Hello, true!
+    say_hello(&String::from("World")); // Hello, World!
+    say_hello(&1337); // Hello, 1337!
+}
+
 
 
