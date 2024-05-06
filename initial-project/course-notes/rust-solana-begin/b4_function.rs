@@ -1,8 +1,11 @@
 /**
 【函数】
-函数声明：
+①函数声明：
 fn fn_name(input1: InputType1, input2, InputType2) -> OutputType {
     // body
+
+②返回值不包含分号
+③永不返回的发散函数(diverge function)：用 ! 作函数返回类型，这种语法往往用做会导致程序崩溃的函数
 }
 */
 fn u32_add(a: u32, b: u32) -> u32 {
