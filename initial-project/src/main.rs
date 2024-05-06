@@ -1,3 +1,3 @@
 fn main() {
-    let text = "Hello, world!";
+    let _text = "Hello, world!";
 }

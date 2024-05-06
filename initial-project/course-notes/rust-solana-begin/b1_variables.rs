@@ -1,7 +1,7 @@
 /**
-可变变量与不可变变量
-声明：let；let mut
-希望不要警告未使用的变量：在变量名前加一个下划线_
+【变量】
+①声明：不可变变量 let；可变变量 let mut
+②希望不要警告未使用的变量：在变量名前加一个下划线_
 */
 fn variables() {
     // 不可变
@@ -10,33 +10,29 @@ fn variables() {
     let mut y = -3;
 }
 
-// ----------- scope作用域 ------------
-fn scope() {
-    let x = 2;
-    println!("{}", x);
+// ----------- 作用域（scope） {} ------------------------------------------------------------
+/**
+--------------- 【变量遮蔽（shadowing）】: allowed to redefine a variable with the same name -----
+变量遮蔽的用处在于：
+如果你在某个作用域内无需再使用之前的变量（在被遮蔽后，无法再访问到之前的同名变量），
+就可以重复的使用变量名字，而不用绞尽脑汁去想更多的名字。
+*/
+fn scope_shadowing() {
+    let x = 5;
+    let x = x + 1;
 
-    // 创建一个新的作用域
     {
-        let y = 3;
-        // 这里可以调用x
-        println!("{}", x); // 2
-        println!("{}", y); // 3
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {}", x); // 12
     }
-    println!("{}", x); //2
-    println!("{}", y); // won't compile because y is "not in scope"
-}
 
-// --------- Shadowing: allowed to redefine a variable with the same name -------
-fn shadowing() {
-    let x = 2;
-    let x = 3;
+    println!("The value of x is: {}", x); // 6
 
-    // 结合作用域
-    let x = 2;
-    {
-        let x = 3;
-    }
-    println!("{}", x); // 2  🔺如果x定义是let mut x可变变量，则这里输出的是3
+    /** 注
+    🔺这和 mut 变量的使用是不同的，
+    第二个 let 生成了完全不同的新变量，两个变量只是恰好拥有同样的名称，涉及一次内存对象的再分配 ，
+    而 mut 声明的变量，可以修改同一个内存地址上的值，并不会发生内存对象的再分配，性能要更好。
+    */
 }
 
 /**
