@@ -1,3 +1,5 @@
 ﻿initial-project/target/debug
 initial-project/course-notes/rust-solana-begin/a1_helloworld
 initial-project/target
+.idea/vcs.xml
+test-ledger

@@ -31,3 +31,6 @@ time = "0.3.36"
 aho-corasick = "1.1.3"
 url = "2.5.0"
 futures = "0.3.30"
+
+#[lib]
+#crate-type = ["cdylib", "lib"]
